@@ -9,13 +9,14 @@ const logger = require('./middleware/logger');
 const requestFilter = require('./middleware/requestFilter');
 const axiosInject = require('./middleware/axiosInject');
 
+// $http injector
+app.use(axiosInject);
+
 // logger
 app.use(logger);
 
 // requestFilter
 app.use(requestFilter);
-
-app.use(axiosInject);
 
 app.use(router.routes());
 

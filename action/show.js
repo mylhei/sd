@@ -1,3 +1,4 @@
 module.exports = (ctx) => {
-    ctx.res.end('333')
+    let res = ctx.response.content.data;
+    ctx.response.body = res;
 }
