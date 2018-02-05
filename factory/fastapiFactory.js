@@ -26,6 +26,26 @@ const FastApiArguments = {
     "v": {required: true, default: '1.3.6'},
 };
 
+const FastApiTArguments = {
+    "ip" : {required: true, useHeader: false},
+    "ua" : {required: true, useHeader: true},
+    "uid" : {required: false},
+    "si" : {required: true},
+    "rr" : {required: false},
+    "url" : {required: false},
+    "min" : {required: false},
+    "max" : {required: false},
+    "reqid" : {required: false},
+    "bf" : {required: false},
+    "tagid" : {required: false, default: 0},
+    "device" : {required: false, type: Object},
+    "gps" : {required: false, type: Object},
+    "app_version": {required: false},
+    "mimes": {required: true, enums: []},
+    "jsonp": {required: false},
+    "v": {required: true, default: '1.3.6'},
+};
+
 const NEED_JUMP_URL_ARR = ['download_urls', 'downloaded_urls', 'install_urls', 'installed_urls'];
 
 class FastApiFactory extends baseFactory {
