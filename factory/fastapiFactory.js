@@ -46,7 +46,7 @@ const FastApiTArguments = {
     "v": {required: true, default: '1.3.6'},
 };
 
-const NEED_JUMP_URL_ARR = ['download_urls', 'downloaded_urls', 'install_urls', 'installed_urls'];
+const NEED_PUSH_URL_ARR = ['download_urls', 'downloaded_urls', 'install_urls', 'installed_urls'];
 
 class FastApiFactory extends baseFactory {
     constructor (uri, ctx) {
@@ -136,9 +136,9 @@ class FastApiFactory extends baseFactory {
                     ad.url = `${trackingPrefix}u=${encodeURIComponent(ad.url)}`;
                 }
 
-                NEED_JUMP_URL_ARR.forEach(u => {
-                    if (ad[u]) {
-                        ad[u] = `${trackingPrefix}u=${encodeURIComponent(ad[u])}`;
+                NEED_PUSH_URL_ARR.forEach(u => {
+                    if (ad[u] && ad[u] instanceof Array) {
+                        ad[u].push(`${trackingPrefix}${qs.stringify(Object.assign({type: u},this.params))}`)
                     }
                 })
             }

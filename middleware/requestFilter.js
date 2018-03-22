@@ -13,7 +13,7 @@ module.exports = async (ctx, next) => {
             result = factory.filter(result);
         }
 
-        if (factory.params.jsonp) {
+        if (factory.params && factory.params.jsonp) {
             result.data = `${factory.params.jsonp}(${JSON.stringify(result.data)})`
         }
 
